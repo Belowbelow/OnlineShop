@@ -42,5 +42,9 @@ def signup():
 def checkout():
     return render_template('checkout.html')
 
+@app.route('/basket', methods=['GET', 'POST'])
+def basket():
+    return render_template('shopping_basket')
+
 if __name__ == "__main__":
     app.run()
