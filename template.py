@@ -69,8 +69,15 @@ def basket():
     return render_template('shopping_basket.html')
 
 #搜索页面
-@app.route('/search', methods=['GET', 'POST'])
+@app.route('/search', methods=['GET'])
+def search_input():
+    return render_template('search.html')
+
+#搜索页面
+@app.route('/search', methods=['POST'])
 def seacrch():
+    searchinfo = request.span['search']
+    print(searchinfo)
     return render_template('search.html')
 
 if __name__ == "__main__":
