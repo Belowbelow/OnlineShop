@@ -38,5 +38,9 @@ def rules():
 def signup():
     return render_template('signup.html')
 
+@app.route('/checkout', methods=['GET', 'POST'])
+def checkout():
+    return render_template('checkout.html')
+
 if __name__ == "__main__":
     app.run()
