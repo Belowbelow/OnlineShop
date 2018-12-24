@@ -12,9 +12,10 @@
             </tr>
         </table> 
         <p>--------------------------------</p>
-        <span action='/search' method='POST'>
-            <input name="search" placeholder="Type to search book", style="height: 40; width: 600;">
-            <button type="submit" style="height: 40;">Search</button>
-        </span>
+        <form action="/search" method="POST">
+            <legend>Search</legend>
+            <p><input name="search" style="height:40; width: 500" placeholder="Type to search" value="{{searchinfo}}"></p>
+            <p><button type="submit">Search</button></p>
+        </form>
     </body>
 </html>

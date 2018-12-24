@@ -76,9 +76,9 @@ def search_input():
 #搜索页面
 @app.route('/search', methods=['POST'])
 def seacrch():
-    searchinfo = request.span['search']
-    print(searchinfo)
-    return render_template('search.html')
+    searchinfo = request.form['search']
+    val = mdbc.search(searchinfo)
+    return render_template('searchrs.html', searchinfo=searchinfo, val=val)
 
 if __name__ == "__main__":
     app.run()

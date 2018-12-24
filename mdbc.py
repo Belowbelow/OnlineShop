@@ -47,4 +47,16 @@ def check_signup(name, psw, confirm):
     conn.close()
     return False
 
-print(check_signup('test', '123', '123'))
+#搜索功能， 输入ISBN号， 书名， 作者， 类型， 搜索书籍， 返回所有结果
+def search(info):
+    conn = mysql.connector.connect(user='root', password='123456', database='bookshop')
+    cur = conn.cursor()
+    cmd = 'select * from books where ISBN=%s or bookname=%s or type=%s or author=%s'
+    info1 = str(info)
+    cur.execute(cmd, [info1, info1, info1, info1])
+    values = cur.fetchall()
+    print(values)
+    return(values)
+    cur.close()
+    conn.close()
+
