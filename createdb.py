@@ -6,6 +6,7 @@ def create_user(cur):
     (id varchar(20) NOT NULL,
     username varchar(20) NOT NULL,
     password varchar(20) NOT NULL,
+    email varchar(20) NOT NULL,
     PRIMARY KEY (id, username, password));
     '''
     cur.execute(cmd)

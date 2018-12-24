@@ -53,7 +53,8 @@ def signup():
     username = request.form['username']
     password = request.form['password']
     confirm = request.form['confirm']
-    if mdbc.check_signup(username, password, confirm):
+    email = request.form['email']
+    if mdbc.check_signup(username, password, confirm, email):
         return render_template('search.html')  
     msg = 'username already exists or password is not equal to confirm'
     return render_template('signup.html', message=msg, username=username)

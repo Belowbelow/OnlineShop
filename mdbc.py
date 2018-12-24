@@ -32,13 +32,13 @@ def check_user(name):
 
 
 #注册功能， 若用户名不存在，则注册， 并返回True，否则返回False
-def check_signup(name, psw, confirm):
+def check_signup(name, psw, confirm, email):
     conn = mysql.connector.connect(user='root', password='123456', database='bookshop')
     cur = conn.cursor()
-    cmd = 'insert into users values (%s, %s)'
+    cmd = 'insert into users values (%s, %s, %s)'
     if not check_user(name):
         if psw==confirm:
-            cur.execute(cmd, [str(name), str(psw)])
+            cur.execute(cmd, [str(name), str(psw), str(email)])
             conn.commit()
             cur.close()
             conn.close()
