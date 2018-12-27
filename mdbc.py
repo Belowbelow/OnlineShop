@@ -58,6 +58,5 @@ def search(info):
     values = cur.fetchall()
     print(values)
     return(values)
-    cur.close()
     conn.close()
 
