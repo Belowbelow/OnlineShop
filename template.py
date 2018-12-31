@@ -68,13 +68,22 @@ def signup():
     return render_template('signup.html', message=msg, username=username)
 
 #结账页面
-@app.route('/checkout', methods=['GET', 'POST'])
+@app.route('/checkout', methods=['GET'])
 def checkout():
+    if 'username' in session:
+        return render_template('checkout.html', val=mdbc.get_orders(session['username']))
+    return render_template('signin.html', message='请先登录')
 
-    return render_template('checkout.html')
+#结账
+@app.route('/checkout', methods=['POST'])
+def checkout_orders():
+    if 'username' in session:
+        mdbc.deal_orders(session['username'])
+        return render_template('checkoutrs.html', val='结账成功')
+    return render_template('signin.html', message='请先登录')
 
 #购物篮页面
-@app.route('/basket', methods=['GET', 'POST'])
+@app.route('/shopping_basket', methods=['GET', 'POST'])
 def basket():
     if 'username' in session:
         return render_template('shopping_basket.html')

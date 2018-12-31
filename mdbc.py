@@ -68,3 +68,22 @@ def buy(username, ISBN, num):
     cur.execute(cmd, [str(username), str(ISBN), str(num), str(0)])
     conn.commit()
     conn.close()
+
+#获取用户订单
+def get_orders(username):
+    conn = mysql.connector.connect(user='root', password='123456', database='bookshop')
+    cur = conn.cursor()
+    cmd = 'select * from orders where customer=%s'
+    cur.execute(cmd, [str(username)])
+    val = cur.fetchall()
+    return val
+    conn.close()
+
+#处理订单
+def deal_orders(username):
+    conn = mysql.connector.connect(user='root', password='123456', database='bookshop')
+    cur = conn.cursor()
+    cmd = 'update orders set state=%s where customer=%s'
+    cur.execute(cmd, [str(1), str(username)])
+    conn.commit()
+    conn.close()
