@@ -1,9 +1,11 @@
 from flask import Flask, request, render_template, session
 import mdbc
-import requests
+import os
 
 app = Flask(__name__)
-app.secret_key = 'please-genereate-a-random-key'
+app.config['SECRET_KEY'] = '1111111111'
+app.config['SESSION_PERMANENT'] = False
+
 
 #主页
 @app.route('/', methods=['GET', 'POST'])
@@ -68,6 +70,7 @@ def signup():
 #结账页面
 @app.route('/checkout', methods=['GET', 'POST'])
 def checkout():
+
     return render_template('checkout.html')
 
 #购物篮页面
@@ -99,7 +102,11 @@ def books_form():
 def books():
     ISBN = request.form['ISBN']
     number = request.form['num']
-    if 'username' in session:
+    print(number, type(number))
+    if number == '':
+        print('0')
+        return render_template('books.html')
+    elif 'username' in session:
         mdbc.buy(session['username'], ISBN, number)
         return render_template('books.html')
     else:
