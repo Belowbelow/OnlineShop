@@ -1,7 +1,9 @@
-from flask import Flask, request, render_template
+from flask import Flask, request, render_template, session
 import mdbc
+import requests
 
 app = Flask(__name__)
+app.secret_key = 'please-genereate-a-random-key'
 
 #主页
 @app.route('/', methods=['GET', 'POST'])
@@ -19,6 +21,7 @@ def singin():
     username = request.form['username']
     password = request.form['password']
     if mdbc.check_signin(username, password):
+        session['username'] = username
         return render_template('shopping_basket.html')
     return render_template('signin.html', message="Wrong input", username=username)
 
@@ -70,7 +73,9 @@ def checkout():
 #购物篮页面
 @app.route('/basket', methods=['GET', 'POST'])
 def basket():
-    return render_template('shopping_basket.html')
+    if 'username' in session:
+        return render_template('shopping_basket.html')
+    return render_template('signin.html', message='请先登陆')
 
 #搜索页面
 @app.route('/search', methods=['GET'])
@@ -83,6 +88,22 @@ def seacrch():
     searchinfo = request.form['search']
     val = mdbc.search(searchinfo)
     return render_template('searchrs.html', searchinfo=searchinfo, val=val)
+
+#书籍页面
+@app.route('/books', methods=['GET'])
+def books_form():
+    return render_template('books.html')
+
+#书籍购买
+@app.route('/books', methods=['POST'])
+def books():
+    ISBN = request.form['ISBN']
+    number = request.form['num']
+    if 'username' in session:
+        mdbc.buy(session['username'], ISBN, number)
+        return render_template('books.html')
+    else:
+        return render_template('signin.html', message="请先登录")
 
 if __name__ == "__main__":
     app.run()

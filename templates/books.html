@@ -1,8 +1,8 @@
+
 <html>
     <head>
-        <title>Contact us</title>
+        <title>books</title>
     </head>
-    <body>
         <table border="1" cellpadding="10">
             <tr>
                 <td><a href="search">Search</a></td>
@@ -12,6 +12,11 @@
                 <td><a href="shopping_baskert">Shopping bakset</a></td>
             </tr>
         </table> 
-        <h1>Contact Us</h1>
+        <form action="/books" method="POST">
+            <legend>Buy book</legend>
+            <p><input name="ISBN" placeholder="书号" value="01001"></p>
+            <p><input name="num" placeholder="数量" type="password"></p>
+            <p><button type="submit">添加进购物车</button></p>
+        </form>
     </body>
 </html>

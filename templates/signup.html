@@ -3,11 +3,20 @@
         <title>Welcome</title>
     </head>
     <body>
+        <table border="1" cellpadding="10">
+            <tr>
+                <td><a href="search">Search</a></td>
+                <td><a href="signin">Sign in</a></td>
+                <td><a href="signup">Sign up</a></td>
+                <td><a href="help">Help</a></td>
+                <td><a href="shopping_baskert">Shopping bakset</a></td>
+            </tr>
+        </table> 
         {% if message %}
         <p style="color:rgb(255, 0, 0)">{{message }}</p>
         {% endif %}
         <form action="/signup" method="POST">
-            <legend>Please Sign In</legend>
+            <legend>Please Sign Up</legend>
             <p><input name="username" placeholder="Username" value="{{username}}"></p>
             <p><input name="password" placeholder="Password" type="password"></p>
             <p><input name="confirm" placeholder="Password" type="password"></p>

@@ -60,3 +60,11 @@ def search(info):
     return(values)
     conn.close()
 
+#购物车功能， 将购物信息添加到数据库
+def buy(username, ISBN, num):
+    conn = mysql.connector.connect(user='root', password='123456', database='bookshop')
+    cur = conn.cursor()
+    cmd = 'insert into orders (customer, ISBN, number, state) values(%s, %s, %s, %s)'
+    cur.execute(cmd, [str(username), str(ISBN), str(num), str(0)])
+    conn.commit()
+    conn.close()
