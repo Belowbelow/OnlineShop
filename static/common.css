@@ -1,3 +1,24 @@
 body{
-    background-image: url(../pic/001.jpg)
+    background-image: url(../pic/001.jpg);
+    background-position: top;
 }
+
+h1 {
+    text-indent: 8  em;
+    color: #1ebac5;
+    position: absolute;
+    left: 100px;
+    top: 0x;
+}
+
+table {
+    border:1px solid blue;
+    color: #000000;
+    position: absolute;
+    left:800px;
+    top:40px;
+}
+
+a:link {color:#ff0000;}
+a:visited {color:#00ffff;}
+a:hover {color:#ffcc00}
