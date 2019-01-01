@@ -1,6 +1,8 @@
-from flask import Flask, request, render_template, session
-import mdbc
 import os
+
+from flask import Flask, render_template, request, session
+
+import mdbc
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = '1111111111'
