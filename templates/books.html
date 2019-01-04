@@ -18,15 +18,14 @@
             </tr>
         </table> 
         <div>
-        {% if val %}
-        <p>{{val[1]}}</p>
+        {% for book in val %}
             <form action="/books" method="POST">
-                <legend>书名：{{val[1][2]}}</legend>
-                <p>ISBN:{{val[1][1]}}</p>
+                <legend>书名：{{book[2]}}</legend>
+                <p>ISBN:{{book[1]}}</p>
                 <p><input name="num" placeholder="购买数量" type="password"></p>
                 <p><button type="submit">添加进购物车</button></p>
             </form>
-            {% endif %}
+            {% endfor %}
         </div>
     </body>
 </html>
