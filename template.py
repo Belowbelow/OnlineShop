@@ -106,7 +106,7 @@ def seacrch():
 #书籍页面
 @app.route('/books', methods=['GET'])
 def books_form():
-    return render_template('books.html')
+    return render_template('books.html', val = mdbc.get_all_books())
 
 #书籍购买
 @app.route('/books', methods=['POST'])
@@ -116,10 +116,10 @@ def books():
     print(number, type(number))
     if number == '':
         print('0')
-        return render_template('books.html')
+        return render_template('books.html', val = mdbc.get_all_books())
     elif 'username' in session:
         mdbc.buy(session['username'], ISBN, number)
-        return render_template('books.html')
+        return render_template('books.html', val = mdbc.get_all_books())
     else:
         return render_template('signin.html', message="请先登录")
 

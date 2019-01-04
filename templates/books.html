@@ -5,7 +5,8 @@
         <title>books</title>
     </head>
     <body style="background-image:url(../pic/001.jpg)">
-        <h1>书籍列表</h1>
+        <!--使用jinja2控制语句-->
+        
         <table border="1" cellpadding="10">
             <tr>
                 <td><a href="search">Search</a></td>
@@ -16,65 +17,16 @@
                 <td><a href="shopping_basket">Shopping bakset</a></td>
             </tr>
         </table> 
-        <form action="/books" method="POST">
-            <legend>Buy book</legend>
-            <p><input name="ISBN" placeholder="书号" value="01001"></p>
-            <p><input name="num" placeholder="数量" type="password"></p>
-            <p><button type="submit">添加进购物车</button></p>
-        </form>
-        <form action="/books" method="POST">
-            <legend>Buy book</legend>
-            <p><input name="ISBN" placeholder="书号" value="01002"></p>
-            <p><input name="num" placeholder="数量" type="password"></p>
-            <p><button type="submit">添加进购物车</button></p>
-        </form>
-        <form action="/books" method="POST">
-            <legend>Buy book</legend>
-            <p><input name="ISBN" placeholder="书号" value="01003"></p>
-            <p><input name="num" placeholder="数量" type="password"></p>
-            <p><button type="submit">添加进购物车</button></p>
-        </form>
-        <form action="/books" method="POST">
-            <legend>Buy book</legend>
-            <p><input name="ISBN" placeholder="书号" value="01004"></p>
-            <p><input name="num" placeholder="数量" type="password"></p>
-            <p><button type="submit">添加进购物车</button></p>
-        </form>
-        <form action="/books" method="POST">
-            <legend>Buy book</legend>
-            <p><input name="ISBN" placeholder="书号" value="01005"></p>
-            <p><input name="num" placeholder="数量" type="password"></p>
-            <p><button type="submit">添加进购物车</button></p>
-        </form>
-        <form action="/books" method="POST">
-            <legend>Buy book</legend>
-            <p><input name="ISBN" placeholder="书号" value="01006"></p>
-            <p><input name="num" placeholder="数量" type="password"></p>
-            <p><button type="submit">添加进购物车</button></p>
-        </form>
-        <form action="/books" method="POST">
-            <legend>Buy book</legend>
-            <p><input name="ISBN" placeholder="书号" value="01007"></p>
-            <p><input name="num" placeholder="数量" type="password"></p>
-            <p><button type="submit">添加进购物车</button></p>
-        </form>
-        <form action="/books" method="POST">
-            <legend>Buy book</legend>
-            <p><input name="ISBN" placeholder="书号" value="01008"></p>
-            <p><input name="num" placeholder="数量" type="password"></p>
-            <p><button type="submit">添加进购物车</button></p>
-        </form>
-        <form action="/books" method="POST">
-            <legend>Buy book</legend>
-            <p><input name="ISBN" placeholder="书号" value="01009"></p>
-            <p><input name="num" placeholder="数量" type="password"></p>
-            <p><button type="submit">添加进购物车</button></p>
-        </form>
-        <form action="/books" method="POST">
-            <legend>Buy book</legend>
-            <p><input name="ISBN" placeholder="书号" value="01010"></p>
-            <p><input name="num" placeholder="数量" type="password"></p>
-            <p><button type="submit">添加进购物车</button></p>
-        </form>
+        <div>
+        {% if val %}
+        <p>{{val[1]}}</p>
+            <form action="/books" method="POST">
+                <legend>书名：{{val[1][2]}}</legend>
+                <p>ISBN:{{val[1][1]}}</p>
+                <p><input name="num" placeholder="购买数量" type="password"></p>
+                <p><button type="submit">添加进购物车</button></p>
+            </form>
+            {% endif %}
+        </div>
     </body>
 </html>

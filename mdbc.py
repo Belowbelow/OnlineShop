@@ -69,6 +69,14 @@ def buy(username, ISBN, num):
     conn.commit()
     conn.close()
 
+def get_all_books():
+    conn = mysql.connector.connect(user='root', password='123456', database='bookshop')
+    cur = conn.cursor()
+    cmd = 'select * from books;'
+    cur.execute(cmd)
+    val = cur.fetchall()
+    return(val)
+
 #获取用户订单
 def get_orders(username):
     conn = mysql.connector.connect(user='root', password='123456', database='bookshop')
