@@ -24,7 +24,7 @@ def create_book(cur):
     type varchar(50) NOT NULL,
     storehouse varchar(50) NOT NULL,
     soldout varchar(50) NOT NULL,
-    author varchar(50) NOT NULL,
+    author varchar(100) NOT NULL,
     introduce varchar(255) NOT NULL,
     bookpicture varchar(50) NOT NULL,
     PRIMARY KEY (bookid))
@@ -52,8 +52,8 @@ def insert_books(cur):
     fPath = './book.txt'
     with open(fPath, 'r', encoding='utf-8') as f:
         for line in f.readlines():
-            print('(' + str(line).replace('\r', '').replace('\n', '') +');')
-            cur.execute(cmd + '(' + str(line).replace('\r', '').replace('\n', '') +');')
+            print('(' + str(line).replace('\n', '').replace('\u30fb', '').replace(' ', '') +');')
+            cur.execute(cmd + '(' + str(line).replace('\r', '').replace('\n', '').replace(' ', '') +');')
 
 def create():
     conn = mysql.connector.connect(user='root', password='123456', database='bookshop')

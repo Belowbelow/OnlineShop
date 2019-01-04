@@ -24,7 +24,7 @@ def change(authors):
 #print(change(['aa', 'bb', 'cc']))
 
 def change1(info):
-    return "'" + info + "'"
+    return ("'" + info + "'").replace(' ', '')
 
 def save(num, bookname, price, author, introduction):
     f_path = "book.txt" 
