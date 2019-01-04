@@ -48,7 +48,7 @@ def getFirstPage(url, num=1001):
     book_price = []
 
     for book in books:
-        images = book.table.select('tr')[0].td.a.select('img')[0].get('src')
+        images = book.table.select('tr')[0].td.a.img.get('file')
         book_images.append(images)
 
         name = book.table.select('tr')[1].td.a.get_text().replace('[按需印刷]', '').replace('[即时配发]', '')
@@ -66,10 +66,11 @@ def getFirstPage(url, num=1001):
 
     for x, y, z, p, l in zip(book_name, book_price, book_author, book_publisher, book_images):
         save(num, x, y, z, p)
-        # r = requests.get(l)
-        # imgPath = './pic/' + str(num) + '.jpg'
-        # with open(imgPath, 'wb') as p:
-        #     p.write(r.content)
+        print(l)
+        r = requests.get(l)
+        imgPath = './pic/book_' + str(num) + '.jpg'
+        with open(imgPath, 'wb') as p:
+            p.write(r.content)
         num = num + 1
 
 
