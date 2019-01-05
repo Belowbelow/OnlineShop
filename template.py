@@ -1,12 +1,13 @@
 import os
 
-from flask import Flask, render_template, request, session
+from flask import Flask, render_template, request, session, Response, make_response
 
 import mdbc
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = '1111111111'
 app.config['SESSION_PERMANENT'] = False
+UPLOAD_PATH = "F:/Work/DBP/006/"
 
 
 #主页
@@ -47,7 +48,7 @@ def contactus():
 #网站使用规则页面
 @app.route('/rules', methods=['GET', 'POST'])
 def rules():
-    return render_template('search.html')
+    return render_template('rules.html')
 
 #注册页面
 @app.route('/signup', methods=['GET'])
@@ -88,7 +89,7 @@ def checkout_orders():
 @app.route('/shopping_basket', methods=['GET', 'POST'])
 def basket():
     if 'username' in session:
-        return render_template('shopping_basket.html')
+        return render_template('shopping_basket.html', val=mdbc.get_orders(session['username']))
     return render_template('signin.html', message='请先登陆')
 
 #搜索页面
@@ -122,6 +123,21 @@ def books():
         return render_template('books.html', val = mdbc.get_all_books())
     else:
         return render_template('signin.html', message="请先登录")
+
+#展示图片
+@app.route('/pic/<string:filename>', methods=['GET'])
+def show_photo(filename):
+    if request.method == 'GET':
+        if filename is None:
+            pass
+        else:
+            #logger.debug('filename is %s' % filename)
+            image_data = open(os.path.join(UPLOAD_PATH, 'pic/%s' % filename), "rb").read()
+            response = make_response(image_data)
+            response.headers['Content-Type'] = 'image/png'
+            return response
+    else:
+        pass
 
 if __name__ == "__main__":
     app.run()

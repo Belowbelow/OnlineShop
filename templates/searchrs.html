@@ -7,8 +7,31 @@
             {{searchinfo}}的搜索结果
             {% endif %}
         </title>
+        <style>
+            .div{
+                height: 50px;
+                width: 100%;
+                background-color: rgb(0, 0, 0);
+            }
+            .div2{
+                height: 190.594px;
+                width: 100%;
+                background-color: white;
+            }
+            .div3{
+                width: 100%;
+                text-align: center;
+            }
+            .li{
+                float: left;
+                overflow: hidden;
+            }
+        </style>
     </head>
     <body>
+        <h1>Search</h1>
+        <div class="div2"></div>
+        <div class="div"></div>
         <table border="1" cellpadding="10">
             <tr>
                 <td><a href="search">Search</a></td>
@@ -18,11 +41,32 @@
                 <td><a href="books">Books</a></td>
                 <td><a href="shopping_basket">Shopping bakset</a></td>
             </tr>
-        </table> 
-        <p>
-            {% if val %}
-            {{val}}
-            {% endif %}
-        </p>
+        </table>
+        <div class="div3">
+            <p>
+                {% if val %}
+                <div class="div3">
+                    <ul>
+                        <li>
+                            <dl>
+                                <dd>
+                                    <img src={{val[0][9]}} alt="暂无图片">
+                                </dd>
+                                <dt>
+                                    <p>书名：{{val[0][2]}}</p>
+                                    <p>ISBN：{{val[0][1]}}</p>
+                                    <p>价格：{{val[0][3]}}</p>
+                                    <p>类型：{{val[0][4]}}</p>
+                                    <p>库存：{{val[0][5]}}</p>
+                                    <p>作者：{{val[0][7]}}</p>
+                                    <p>介绍：{{val[0][8]}}</p>
+                                </dt>
+                            </dl>
+                        </li>
+                    </ul>
+                </div>
+                {% endif %}
+            </p>
+        </div>
     </body>
 </html>

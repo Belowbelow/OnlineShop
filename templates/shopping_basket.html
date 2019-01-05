@@ -2,6 +2,16 @@
     <head>
         <link rel="stylesheet" type="text/css" href="../static/common.css" />
         <title>shopping basket</title>
+        <style>
+            .a{
+                border: 1px solid #1ebac5;
+                border-radius: 5px;
+                height: 20px;
+                width: 100px;
+                background-color: #262c2e70;
+                color: white;
+            }
+        </style>
     </head>
     <body>
         <table border="1" cellpadding="10">
@@ -14,7 +24,25 @@
                 <td><a href="shopping_basket">Shopping bakset</a></td>
             </tr>
         </table> 
-        <p>shopping basket</p>
-        <a href="checkout">Check Out</a>
+        {% for book in val %}
+        <ul>
+            <li>
+                <dl>
+                    <dt>
+                        订单
+                    </dt>
+                    <dd>
+                        <p>订单号：{{book[0]}}</p>
+                        <p>用户名：{{book[1]}}</p>
+                        <p>书号：{{book[2]}}</p>
+                        <p>订购数量：{{book[3]}}</p>
+                        <p>订单状态：{{book[4] | replace('0', '未处理') | replace('1', '已处理')}}</p>
+            
+                    </dd>
+                </dl>
+            </li>
+        </ul>
+        {% endfor %}
+        <a class="a" href="checkout">Check Out</a>
     </body>
 </html>

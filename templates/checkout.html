@@ -2,8 +2,43 @@
     <head>
         <link rel="stylesheet" type="text/css" href="../static/common.css" />
         <title>Check Out</title>
+        <style>
+            .div{
+                height:50px;
+                width: 100%;
+                background-color: rgb(0, 0, 0);
+            }
+            .div2{
+                height:20%;
+                width: 100%;
+                background-color: white;
+            }
+            .div3{
+                padding-top:10%;
+                width: 100%;
+                text-align: center;
+            }
+            .button{
+                width: 200px;
+                height: 100px;
+                border-width: 0px;
+                border-radius: 10px;
+                background: rgb(79, 170, 120);
+                cursor: pointer;
+                outline: none;
+                font-family:fantasy;
+                color: white;
+                font-size: 40px;
+            }
+            .button:hover{
+                opacity: 0.5;
+            }
+        </style>
     </head>
     <body>
+        <div class="div2"></div>
+        <div class="div"></div>
+    
         <table border="1" cellpadding="10">
             <tr>
                 <td><a href="search">Search</a></td>
@@ -15,11 +50,10 @@
             </tr>
         </table> 
         <h1>Check Out</h1>
-        {% if book %}
-        <p>{{book}}</p>
-        {% endif %}
-        <form action='/checkout', method="POST">
-            <p><button type='submit'>结账</button></p>
-        </form>
+        <div class="div3">
+                <form action='/checkout', method="POST">
+                    <p><button class="button" type='submit'>结账！</button></p>
+                </form>
+        </div>
     </body>
 </html>

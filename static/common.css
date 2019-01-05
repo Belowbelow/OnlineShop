@@ -1,22 +1,24 @@
-body{
-    background-image: url(../pic/001.jpg);
-    background-position: top;
-}
+
 
 h1 {
     text-indent: 8  em;
     color: #1ebac5;
     position: absolute;
-    left: 100px;
-    top: 0x;
+    left: 250px;
+    top: 0px;
+    font-size: 80px;
 }
 
 table {
-    border:1px solid blue;
+    border:1px solid #1ebac5;
+    border-radius: 10px;
+    border-left-width: 15px;
     color: #000000;
+    background-color: beige;
+    opacity: 0.8;
     position: absolute;
-    left:800px;
-    top:40px;
+    left:1000px;
+    top:90px;
 }
 
 a:link {color:#ff0000;}

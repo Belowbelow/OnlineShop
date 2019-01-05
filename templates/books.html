@@ -3,9 +3,53 @@
     <head>
         <link rel="stylesheet" type="text/css" href="../static/common.css" />
         <title>books</title>
+        <style>
+            .div{
+                height:50px;
+                width: 100%;
+                background-color: rgb(0, 0, 0);
+            }
+            .div2{
+                height:20%;
+                width: 100%;
+                background-color: white;
+            }
+            .div3{
+                width:100%;
+                text-align: center;
+            }
+            .button{
+                width: 100px;
+                height: 30px;
+                border-width: 0px;
+                border-radius: 10px;
+                background: rgb(79, 170, 120);
+                cursor: pointer;
+                outline: none;
+                font-family:fantasy;
+                color: white;
+                font-size: 10px;
+            }
+            .button:hover{
+                opacity: 0.5;
+            }
+            .input{
+                border: 1px solid #cccccc;
+                padding: 7px 0px;
+                border-radius: 3px;
+                
+            }
+            .input:focus{
+                border-color: #1ebac5;
+                outline: none;
+                box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075),0 0 8px rgba(102, 175, 233, 0.6)
+            }
+            
+        </style>
     </head>
-    <body style="background-image:url(../pic/001.jpg)">
+    <body>
         <!--使用jinja2控制语句-->
+        <h1>Books</h1>
         
         <table border="1" cellpadding="10">
             <tr>
@@ -16,22 +60,24 @@
                 <td><a href='books'>Books</a></td>
                 <td><a href="shopping_basket">Shopping bakset</a></td>
             </tr>
-        </table> 
-        <div>
+        </table>
+        <div class="div2"></div>
+        <div class="div"></div> 
+        <div class="div3">
         {% for book in val %}
             <form action="/books" method="POST">
+                <img src={{book[9]}} alt="暂无图片">
                 <legend>书名：{{book[2]}}</legend>
-                <p><input name="ISBN" value={{book[1]}}></p>
+                <p><input name="ISBN" value={{book[1]}} class="input"></p>
                 <p>价格:{{book[3]}}</p>
                 <p>类型:{{book[4]}}</p>
                 <p>库储:{{book[5]}}</p>
                 <p>作者:{{book[7]}}</p>
                 <p>介绍:{{book[8]}}</p>
-                <p id='path'>{{book[9] | replace('./', 'f:/work/DBP/006/')}}</p>
-                <p><input name="num" placeholder="购买数量"></p>
-                <p><button type="submit">添加进购物车</button></p>
+                <p><input class="input" name="num" placeholder="购买数量" type="password"></p>
+                <p><button type="submit" class="button">加入购物车</button></p>
             </form>
-        {% endfor %}
+            {% endfor %}
         </div>
     </body>
 </html>
