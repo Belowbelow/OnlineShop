@@ -15,6 +15,9 @@
             </tr>
         </table> 
         <h1>Check Out</h1>
+        {% if book %}
+        <p>{{book}}</p>
+        {% endif %}
         <form action='/checkout', method="POST">
             <p><button type='submit'>结账</button></p>
         </form>

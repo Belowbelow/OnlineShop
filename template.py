@@ -73,7 +73,7 @@ def signup():
 @app.route('/checkout', methods=['GET'])
 def checkout():
     if 'username' in session:
-        return render_template('checkout.html', val=mdbc.get_orders(session['username']))
+        return render_template('checkout.html', book=mdbc.get_orders(session['username']))
     return render_template('signin.html', message='请先登录')
 
 #结账
@@ -111,7 +111,7 @@ def books_form():
 #书籍购买
 @app.route('/books', methods=['POST'])
 def books():
-    ISBN = request.form['ISBN']
+    ISBN = request.form["ISBN"]
     number = request.form['num']
     print(number, type(number))
     if number == '':
